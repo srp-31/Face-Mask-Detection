@@ -15,7 +15,7 @@
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![Live Demo](https://github.com/chandrikadeb7/Face-Mask-Detection/blob/master/Readme_images/Demo.gif)
+![Live Demo](https://github.com/chandrikadeb7/Face-Mask-Detection/blob/master/readme_images/Demo.gif)
 
 ## :point_down: Support me here!
 <a href="https://www.buymeacoffee.com/chandrikadeb7" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
@@ -33,7 +33,7 @@ In the present scenario due to Covid-19, there is no efficient face mask detecti
 
 
 
-<p align="center"><img src="https://github.com/chandrikadeb7/Face-Mask-Detection/blob/master/Readme_images/Screen%20Shot%202020-05-14%20at%208.49.06%20PM.png" width="700" height="400"></p>
+<p align="center"><img src="https://github.com/chandrikadeb7/Face-Mask-Detection/blob/master/readme_images/Screen%20Shot%202020-05-14%20at%208.49.06%20PM.png" width="700" height="400"></p>
 
 
 ## :warning: TechStack/framework used
@@ -102,7 +102,7 @@ $ python3 detect_mask_video.py
 
 #### Our model gave 93% accuracy for Face Mask Detection after training via <code>tensorflow-gpu==2.0.0</code>
 
-![](https://github.com/chandrikadeb7/Face-Mask-Detection/blob/master/Readme_images/Screenshot%202020-06-01%20at%209.48.27%20PM.png)
+![](https://github.com/chandrikadeb7/Face-Mask-Detection/blob/master/readme_images/Screenshot%202020-06-01%20at%209.48.27%20PM.png)
 
 #### We got the following accuracy/loss training curve plot
 ![](https://github.com/chandrikadeb7/Face-Mask-Detection/blob/master/plot.png)
@@ -118,12 +118,12 @@ $ streamlit run app.py
 ## Images
 
 <p align="center">
-  <img src="Readme_images/1.PNG">
+  <img src="readme_images/1.PNG">
 </p>
 <p align="center">Upload Images</p>
 
 <p align="center">
-  <img src="Readme_images/2.PNG">
+  <img src="readme_images/2.PNG">
 </p>
 <p align="center">Results</p>
 

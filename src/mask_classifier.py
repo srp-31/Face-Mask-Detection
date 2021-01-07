@@ -35,11 +35,7 @@ ap.add_argument("-m", "--model", type=str,
 	help="path to output face mask detector model")
 args = vars(ap.parse_args())
 
-# initialize the initial learning rate, number of epochs to train for,
-# and batch size
-INIT_LR = 1e-4
-EPOCHS = 20
-BS = 32
+
 
 # grab the list of images in our dataset directory, then initialize
 # the list of data (i.e., images) and class images

@@ -27,9 +27,9 @@ def mask_image():
 
 	# load our serialized face detector model from disk
 	print("[INFO] loading face detector model...")
-	prototxtPath = os.path.sep.join([args["face"], "deploy.prototxt"])
-	weightsPath = os.path.sep.join([args["face"],
-		"res10_300x300_ssd_iter_140000.caffemodel"])
+	prototxtPath = os.path.join(args["face"], "deploy.prototxt")
+	weightsPath = os.path.join(args["face"],
+		"res10_300x300_ssd_iter_140000.caffemodel")
 	net = cv2.dnn.readNet(prototxtPath, weightsPath)
 
 	# load the face mask detector model from disk
