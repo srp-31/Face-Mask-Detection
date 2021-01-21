@@ -6,7 +6,7 @@ authors=["srp-31 <srp@tier.app>"]
 
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = ">=3.6.1,<4.0"
 argparse = "1.1"
 imutils = "0.5.3"
 keras = "2.3.1"
@@ -23,6 +23,8 @@ Flask = "^1.1.2"
 gunicorn = "^20.0.4"
 dash = "^1.18.1"
 dash-renderer = "^1.8.3"
+mlrun = "^0.5.4"
+python-dotenv = "^0.15.0"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"  # "*" does not work with black's versioning scheme

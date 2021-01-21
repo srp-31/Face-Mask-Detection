@@ -80,3 +80,6 @@ ENV/
 .idea/
 git status
 
+#Misc
+src/get_start
+

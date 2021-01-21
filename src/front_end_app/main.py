@@ -13,7 +13,9 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 import detect_mask_image
 import json
+import base64
 
+UPLOAD_DIRECTORY='./uploaded_images'
 class VideoCamera(object):
     def __init__(self):
         self.video = cv2.VideoCapture(0)
@@ -40,6 +42,12 @@ app = dash.Dash(__name__, server=server)
 def video_feed():
     return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+def save_file(name, content):
+    """Decode and store a file uploaded with Plotly Dash."""
+    data = content.encode("utf8").split(b";base64,")[1]
+    with open(os.path.join(UPLOAD_DIRECTORY, name), "wb") as fp:
+        fp.write(base64.decodebytes(data))
 
 
 DYNAMIC_CONTROLS = {
@@ -103,10 +111,12 @@ app.layout = html.Div([
     ),
     html.Div(id='selected-mode'),
     html.Hr(),
-    html.H2('Input pane'),
+    html.H2('Input Data'),
     html.Div(id='input-pane'),
     html.Hr(),
-    html.H2('Output pane'),
+    html.Button('Process', id='process-data',n_clicks=0),
+    html.Hr(),
+    html.H2('Output Data'),
     html.Div(id='output-pane')
 ])
 
@@ -132,11 +142,11 @@ def update_output(value):
     State({'type': 'input-data', 'index': ALL}, 'filename'))
 def update_output(value,contents,n_clicks,filename):
     ctx=dash.callback_context
-    ctx_msg = json.dumps({
-        'states': ctx.states,
-        'triggered': ctx.triggered,
-        'inputs': ctx.inputs
-    }, indent=2)
+    #ctx_msg = json.dumps({
+    #    'states': ctx.states,
+    #    'triggered': ctx.triggered,
+    #    'inputs': ctx.inputs
+    #}, indent=2)
 
     if ctx.triggered:
         usage_mode=ctx.inputs[ "dropdown.value"]
@@ -146,8 +156,10 @@ def update_output(value,contents,n_clicks,filename):
             if filtered_list:
                 img_contents=ctx.inputs["{\"index\":0,\"type\":\"input-data\"}.contents"]
                 img_filename=ctx.states["{\"index\":0,\"type\":\"input-data\"}.filename"]
-                return html.Div([html.H5(img_filename),
-                                 html.Img(src=img_contents)])
+                if img_contents:
+                    save_file(img_filename,img_contents)
+                    return html.Div([html.H5(img_filename),
+                                     html.Img(src=img_contents)])
             #elif value == 'UV':
              #   return html.Div([html.H5(filename),
               #                   html.Video(src=contents)])
