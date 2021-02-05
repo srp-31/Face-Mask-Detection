@@ -1,0 +1,18 @@
+FROM python:3.8-slim-buster
+COPY pyproject.toml poetry.lock ./
+RUN apt update && apt install -y curl apt-utils
+RUN apt-get install -y libgtk2.0-dev
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+RUN POETRY_VIRTUALENVS_CREATE=false $HOME/.poetry/bin/poetry install --no-dev
+COPY ./src/prediction_server /app
+COPY ./models /app/models
+WORKDIR /app
+EXPOSE 5000
+
+# Define environment variable
+ENV MODEL_NAME DetectFaceClassifyMask
+ENV API_TYPE REST
+ENV SERVICE_TYPE MODEL
+ENV PERSISTENCE 0
+
+CMD exec seldon-core-microservice $MODEL_NAME --service-type $SERVICE_TYPE --persistence $PERSISTENCE

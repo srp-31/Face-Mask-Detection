@@ -14,7 +14,7 @@ def jpg_str_to_frame(encoded):
 
 class DetectFaceClassifyMask():
 
-    def __init__(self, face_folder, mask_classifier, confidence):
+    def __init__(self, face_folder='./models/face_detector', mask_classifier='./models/mask_detector.model', confidence=0.5):
         # load our serialized face detector model from disk
         self.face_folder=face_folder
         self.mask_classifier=mask_classifier
@@ -105,11 +105,11 @@ class DetectFaceClassifyMask():
                         cv2.FONT_HERSHEY_SIMPLEX, 0.45, color, 2)
             cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
 
-        return (locs, preds)
+        return str((locs, preds))
 
-    def predict(self, img_bytes):
+    def predict(self, img_bytes,meta=None):
         # grab the dimensions of the frame and then construct a blob
         # from it
         frame=jpg_str_to_frame(img_bytes)
-        self.predict_frame(frame)
+        return self.predict_frame(frame)
 
